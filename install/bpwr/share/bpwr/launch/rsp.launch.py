@@ -1,1 +1,0 @@
-/home/ustaz/Documents/gradProject/src/my_bot/launch/rsp.launch.py

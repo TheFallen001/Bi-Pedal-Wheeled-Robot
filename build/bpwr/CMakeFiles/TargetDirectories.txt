@@ -1,9 +1,0 @@
-/home/ustaz/Documents/gradProject/build/bpwr/CMakeFiles/uninstall.dir
-/home/ustaz/Documents/gradProject/build/bpwr/CMakeFiles/bpwr_uninstall.dir
-/home/ustaz/Documents/gradProject/build/bpwr/CMakeFiles/test.dir
-/home/ustaz/Documents/gradProject/build/bpwr/CMakeFiles/edit_cache.dir
-/home/ustaz/Documents/gradProject/build/bpwr/CMakeFiles/rebuild_cache.dir
-/home/ustaz/Documents/gradProject/build/bpwr/CMakeFiles/list_install_components.dir
-/home/ustaz/Documents/gradProject/build/bpwr/CMakeFiles/install.dir
-/home/ustaz/Documents/gradProject/build/bpwr/CMakeFiles/install/local.dir
-/home/ustaz/Documents/gradProject/build/bpwr/CMakeFiles/install/strip.dir

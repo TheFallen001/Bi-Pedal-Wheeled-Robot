@@ -1,6 +1,0 @@
-Invoking command in '/home/ustaz/Documents/gradProject/build/bpwr': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/ustaz/Documents/gradProject/src/my_bot -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/ustaz/Documents/gradProject/install/bpwr
-Invoked command in '/home/ustaz/Documents/gradProject/build/bpwr' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/ustaz/Documents/gradProject/src/my_bot -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/ustaz/Documents/gradProject/install/bpwr
-Invoking command in '/home/ustaz/Documents/gradProject/build/bpwr': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/ustaz/Documents/gradProject/build/bpwr -- -j12 -l12
-Invoked command in '/home/ustaz/Documents/gradProject/build/bpwr' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/ustaz/Documents/gradProject/build/bpwr -- -j12 -l12
-Invoking command in '/home/ustaz/Documents/gradProject/build/bpwr': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/ustaz/Documents/gradProject/build/bpwr
-Invoked command in '/home/ustaz/Documents/gradProject/build/bpwr' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/ustaz/Documents/gradProject/build/bpwr
