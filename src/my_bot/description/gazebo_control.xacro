@@ -28,5 +28,18 @@
             <command_topic>cmd_vel</command_topic>
 
         </plugin>
+
+        <plugin name="gazebo_ros_joint_state_publisher"
+            filename="libgazebo_ros_joint_state_publisher.so">
+            <alwaysOn>true</alwaysOn>
+            <updateRate>50</updateRate>
+            <joint_name>Wheel_L_Joint</joint_name>
+            <joint_name>Wheel_R_Joint</joint_name>
+            <joint_name>L_Hip_Joint</joint_name>
+            <joint_name>R_Hip_Joint</joint_name>
+            <joint_name>L_Shin_Joint</joint_name>
+            <joint_name>R_Shin_Joint</joint_name>
+            <!-- Add every movable joint -->
+        </plugin>
     </gazebo>
 </robot>
