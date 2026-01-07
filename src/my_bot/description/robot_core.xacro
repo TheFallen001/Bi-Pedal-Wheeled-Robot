@@ -173,6 +173,7 @@
     </collision>
   </link>
 
+
   <!-- ===================== -->
   <!--   JOINTS              -->
   <!-- ===================== -->
@@ -185,6 +186,15 @@
     <axis xyz="0 0 1" />
     <limit lower="-1.57" upper="1.57" effort="50" velocity="10" />
   </joint>
+  <!-- <transmission name="L_Hip_Joint_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="L_Hip_Joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="L_Hip_Joint_motor">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </actuator>
+  </transmission> -->
 
   <joint name="L_Shin_Joint" type="revolute">
     <origin xyz="0 -0.317 0" rpy="-3.1416 0 -1.6808" />
@@ -193,6 +203,15 @@
     <axis xyz="0 0 1" />
     <limit lower="-1.57" upper="1.57" effort="50" velocity="10" />
   </joint>
+  <!-- <transmission name="L_Shin_Joint_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="R_Hip_Joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="L_Shin_Joint_motor">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </actuator>
+  </transmission> -->
 
   <joint name="Wheel_L_Joint" type="continuous">
     <origin xyz="0 -0.317 0" rpy="0 0 1.2761" />
@@ -202,6 +221,7 @@
     <limit lower="-1.57" upper="1.57" effort="50" velocity="10" />
   </joint>
 
+
   <joint name="R_Hip_Joint" type="revolute">
     <origin xyz="-0.23 0.018797 -0.0050706" rpy="1.5708 -0.97309 1.5708" />
     <parent link="Waist" />
@@ -209,6 +229,15 @@
     <axis xyz="0 0 1" />
     <limit lower="-1.57" upper="1.57" effort="50" velocity="10" />
   </joint>
+  <!-- <transmission name="R_Hip_Joint_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="R_Hip_Joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="R_Hip_Joint_motor">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </actuator>
+  </transmission> -->
 
   <joint name="R_Shin_Joint" type="revolute">
     <origin xyz="0 -0.317 0" rpy="3.1416 0 1.6808" />
@@ -217,6 +246,15 @@
     <axis xyz="0 0 1" />
     <limit lower="-1.57" upper="1.57" effort="50" velocity="10" />
   </joint>
+    <!-- <transmission name="R_Shin_Joint_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="L_Hip_Joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="R_Shin_Joint_motor">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </actuator>
+  </transmission> -->
 
   <joint name="Wheel_R_Joint" type="continuous">
     <origin xyz="0 -0.317 0" rpy="0 0 1.6915" />
@@ -266,7 +304,7 @@
     <damping>0.1</damping>
     <mu1>1.5</mu1>
     <mu2>1.0</mu2>
-     <material>Gazebo/Black</material>
+    <material>Gazebo/Black</material>
   </gazebo>
 
   <gazebo reference="Wheel_R">
