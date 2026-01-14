@@ -1,0 +1,8 @@
+<library path="balance_controller">
+  <class
+    name="balance_controller/BalanceController"
+    type="balance_controller::BalanceController"
+    base_class_type="controller_interface::ControllerInterface">
+    <description>Self balancing controller</description>
+  </class>
+</library>

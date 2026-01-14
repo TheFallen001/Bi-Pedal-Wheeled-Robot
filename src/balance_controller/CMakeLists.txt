@@ -13,6 +13,51 @@ find_package(hardware_interface REQUIRED)
 find_package(pluginlib REQUIRED)
 find_package(sensor_msgs REQUIRED)
 
+
+add_library(${PROJECT_NAME} SHARED
+  src/balance_controller.cpp
+)
+target_include_directories(${PROJECT_NAME} PRIVATE
+  include
+)
+ament_target_dependencies(${PROJECT_NAME}
+  controller_interface
+  hardware_interface
+  pluginlib
+  rclcpp
+  sensor_msgs
+)
+
+pluginlib_export_plugin_description_file(
+  controller_interface plugin.xml
+)
+
+# 3. Prevent "Undefined Reference" errors during loading
+# This ensures the library is correctly linked
+target_compile_definitions(${PROJECT_NAME} PRIVATE "BALANCE_CONTROLLER_BUILDING_DLL")
+
+# 4. Install instructions
+install(TARGETS ${PROJECT_NAME}
+  EXPORT export_${PROJECT_NAME}
+  ARCHIVE DESTINATION lib
+  LIBRARY DESTINATION lib
+  RUNTIME DESTINATION bin
+)
+
+install(FILES plugin.xml 
+  DESTINATION share/${PROJECT_NAME}
+)
+
+# 5. Export for ROS 2 discovery
+ament_export_targets(export_${PROJECT_NAME} HAS_LIBRARY_TARGET)
+ament_export_dependencies(
+  controller_interface
+  hardware_interface
+  pluginlib
+  rclcpp
+  sensor_msgs
+)
+
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
   # the following line skips the linter which checks for copyrights

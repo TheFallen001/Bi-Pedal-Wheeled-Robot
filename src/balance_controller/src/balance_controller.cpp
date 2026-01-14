@@ -1,56 +1,45 @@
 #include "balance_controller/balance_controller.hpp"
 #include "pluginlib/class_list_macros.hpp"
 
-controller_interface::CallbackReturn BalanceController::on_init()
+namespace balance_controller
 {
-  auto node = get_node();
 
-  imu_sub_ = node->create_subscription<sensor_msgs::msg::Imu>(
-    "/imu", 10,
-    [this](sensor_msgs::msg::Imu::SharedPtr msg)
+    controller_interface::CallbackReturn BalanceController::on_init()
     {
-      // Pitch angle approximation (small angles)
-      theta_ = msg->orientation.y;
-      theta_dot_ = msg->angular_velocity.y;
-    });
+        return controller_interface::CallbackReturn::SUCCESS;
+    }
 
-  return controller_interface::CallbackReturn::SUCCESS;
-}
+    controller_interface::InterfaceConfiguration BalanceController::command_interface_configuration() const
+    {
+        controller_interface::InterfaceConfiguration config;
+        config.type = controller_interface::interface_configuration_type::INDIVIDUAL;
+        // Claim velocity interfaces for wheels
+        config.names.push_back("Wheel_L_Joint/effort");
+        config.names.push_back("Wheel_R_Joint/effort");
+        return config;
+    }
 
-controller_interface::CallbackReturn BalanceController::on_activate(
-  const rclcpp_lifecycle::State &)
-{
-  return controller_interface::CallbackReturn::SUCCESS;
-}
+    controller_interface::InterfaceConfiguration BalanceController::state_interface_configuration() const
+    {
+        controller_interface::InterfaceConfiguration config;
+        config.type = controller_interface::interface_configuration_type::INDIVIDUAL;
 
-controller_interface::CallbackReturn BalanceController::on_deactivate(
-  const rclcpp_lifecycle::State &)
-{
-  return controller_interface::CallbackReturn::SUCCESS;
-}
+        config.names.push_back("Wheel_L_Joint/velocity");
+        config.names.push_back("Wheel_R_Joint/velocity");
 
-controller_interface::return_type BalanceController::update(
-  const rclcpp::Time &,
-  const rclcpp::Duration &)
-{
-  // Get wheel velocities
-  double x_dot = state_interfaces_[0].get_value(); // left wheel
-  double x = 0.0; // optional (ignore initially)
+        config.names.push_back("Wheel_L_Joint/position");
+        config.names.push_back("Wheel_R_Joint/position");
+        return config;
+    }
 
-  // LQR control
-  double u =
-    -K_[0]*x
-    -K_[1]*x_dot
-    -K_[2]*theta_
-    -K_[3]*theta_dot_;
+    controller_interface::return_type BalanceController::update(const rclcpp::Time & /*time*/, const rclcpp::Duration & /*period*/)
+    {
+        // 1. Get states from state_interfaces_
+        // 2. Calculate LQR: $u = -K \mathbf{x}$
+        // 3. Write to command_interfaces_
+        return controller_interface::return_type::OK;
+    }
 
-  // Send torque to wheels
-  command_interfaces_[0].set_value(u);
-  command_interfaces_[1].set_value(u);
+} // namespace balance_controller
 
-  return controller_interface::return_type::OK;
-}
-
-PLUGINLIB_EXPORT_CLASS(
-  BalanceController,
-  controller_interface::ControllerInterface)
+PLUGINLIB_EXPORT_CLASS(balance_controller::BalanceController, controller_interface::ControllerInterface)
